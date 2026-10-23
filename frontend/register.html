@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — AI-Powered Interview Management and Recruitment System</title>
+  <meta name="description"
+    content="Futuristic cyber portal registration for the AI-Powered Interview Management and Recruitment System.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #050811;
+      --card-bg: rgba(9, 14, 26, 0.95);
+      --cyan-neon: #00F2FE;
+      --cyan-glow: rgba(0, 242, 254, 0.45);
+      --cyan-soft: rgba(0, 242, 254, 0.12);
+      --blue-accent: #4FACFE;
+      --navy-bg: #0B1224;
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      --text-sub: #64748B;
+      --border-glow: rgba(0, 242, 254, 0.7);
+      --danger: #FF3366;
+      --danger-bg: rgba(255, 51, 102, 0.12);
+      --danger-border: rgba(255, 51, 102, 0.4);
+      --success: #00FFB2;
+      --success-bg: rgba(0, 255, 178, 0.12);
+      --success-border: rgba(0, 255, 178, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 15% 20%, rgba(0, 242, 254, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(79, 172, 254, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(11, 18, 36, 0.85) 0%, #050811 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      color: var(--text-main);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Grid */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-sphere {
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    .glow-1 {
+      background: #00F2FE;
+      top: -150px;
+      left: -150px;
+    }
+
+    .glow-2 {
+      background: #4FACFE;
+      bottom: -150px;
+      right: -150px;
+    }
+
+    .signup-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 940px;
+      animation: cyberEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes cyberEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Centered Card with Glowing Cyan Neon Border */
+    .cyber-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 1.5px solid var(--border-glow);
+      box-shadow:
+        0 0 30px var(--cyan-glow),
+        0 0 70px rgba(0, 242, 254, 0.15),
+        inset 0 0 15px rgba(0, 242, 254, 0.08);
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      min-height: 560px;
+      backdrop-filter: blur(20px);
+    }
+
+    /* LEFT SIDE: REGISTRATION FORM */
+    .card-left {
+      flex: 1.2;
+      padding: 40px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 3;
+      background: rgba(8, 13, 25, 0.96);
+    }
+
+    .brand-mini-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .brand-pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--cyan-neon);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--cyan-neon);
+      animation: pulseNeon 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseNeon {
+
+      0%,
+      100% {
+        opacity: 0.6;
+        transform: scale(0.9);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.2);
+      }
+    }
+
+    .brand-mini-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--cyan-neon);
+      font-weight: 600;
+    }
+
+    .signup-heading {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #FFFFFF;
+      margin-bottom: 20px;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Form Fields */
+    .field-group {
+      margin-bottom: 14px;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #CBD5E1;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+
+    .input-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon-left {
+      position: absolute;
+      left: 14px;
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+      transition: color 0.2s ease;
+    }
+
+    .cyber-input {
+      width: 100%;
+      padding: 11.5px 14px 11.5px 44px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      color: #FFFFFF;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1.5px solid rgba(0, 242, 254, 0.25);
+      border-radius: 9px;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .cyber-input::placeholder {
+      color: #475569;
+    }
+
+    .cyber-input:focus {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 16px rgba(0, 242, 254, 0.35);
+    }
+
+    .cyber-input:focus+.input-icon-left,
+    .cyber-input:focus~.input-icon-left {
+      color: var(--cyan-neon);
+    }
+
+    .cyber-input.has-error {
+      border-color: var(--danger);
+      background: rgba(255, 51, 102, 0.06);
+    }
+
+    .field-err-msg {
+      display: none;
+      font-size: 11px;
+      color: var(--danger);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .field-err-msg.visible {
+      display: block;
+    }
+
+    .btn-toggle-eye {
+      position: absolute;
+      right: 12px;
+      background: transparent;
+      border: none;
+      color: var(--text-sub);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s ease;
+    }
+
+    .btn-toggle-eye:hover {
+      color: var(--cyan-neon);
+    }
+
+    /* Password Strength Meter */
+    .strength-meter {
+      height: 3.5px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      margin-top: 6px;
+      overflow: hidden;
+      display: none;
+    }
+
+    .strength-bar {
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Submit Button */
+    .btn-cyber-signup {
+      width: 100%;
+      padding: 12.5px 20px;
+      margin-top: 10px;
+      background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+      color: #050811;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.45);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-cyber-signup:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.7);
+    }
+
+    .btn-cyber-signup:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .loading-spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(5, 8, 17, 0.3);
+      border-top-color: #050811;
+      border-radius: 50%;
+      animation: spinSpinner 0.65s linear infinite;
+      display: none;
+    }
+
+    @keyframes spinSpinner {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Cyber Divider */
+    .cyber-divider {
+      display: flex;
+      align-items: center;
+      margin: 16px 0 14px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+
+    .cyber-divider::before,
+    .cyber-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0, 242, 254, 0.28), transparent);
+    }
+
+    .cyber-divider span {
+      padding: 0 12px;
+      color: #94A3B8;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* "Continue with Google" Button */
+    .btn-google-continue {
+      width: 100%;
+      padding: 12px 18px;
+      background: rgba(11, 18, 36, 0.85);
+      border: 1.5px solid rgba(0, 242, 254, 0.35);
+      border-radius: 10px;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 0 12px rgba(0, 242, 254, 0.05);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-google-continue:hover:not(:disabled) {
+      background: rgba(16, 26, 50, 0.95);
+      border-color: var(--cyan-neon);
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.35), 0 6px 20px rgba(0, 0, 0, 0.4);
+      color: #FFFFFF;
+    }
+
+    .btn-google-continue:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .btn-google-continue:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .google-icon {
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-google-continue:hover:not(:disabled) .google-icon {
+      transform: scale(1.08);
+    }
+
+    .loading-spinner-google {
+      width: 17px;
+      height: 17px;
+      border: 2px solid rgba(0, 242, 254, 0.2);
+      border-top-color: var(--cyan-neon);
+      border-radius: 50%;
+      animation: spinSpinner 0.65s linear infinite;
+      display: none;
+      flex-shrink: 0;
+    }
+
+    .login-cta {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .login-cta a {
+      color: var(--cyan-neon);
+      font-weight: 600;
+      text-decoration: none;
+      margin-left: 4px;
+      transition: all 0.2s;
+    }
+
+    .login-cta a:hover {
+      color: #FFFFFF;
+      text-shadow: 0 0 10px var(--cyan-neon);
+      text-decoration: underline;
+    }
+
+    /* Alert Banner */
+    .cyber-alert {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 12.5px;
+      margin-bottom: 14px;
+    }
+
+    .cyber-alert.visible {
+      display: flex;
+    }
+
+    .cyber-alert-danger {
+      background: var(--danger-bg);
+      color: #FFA3BA;
+      border: 1px solid var(--danger-border);
+      box-shadow: 0 0 15px rgba(255, 51, 102, 0.2);
+    }
+
+    .cyber-alert-success {
+      background: var(--success-bg);
+      color: #A3FFDD;
+      border: 1px solid var(--success-border);
+      box-shadow: 0 0 15px rgba(0, 255, 178, 0.2);
+    }
+
+    /* RIGHT SIDE: DIAGONAL SHOWCASE */
+    .card-right {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 48px 42px;
+      overflow: hidden;
+      margin-left: -40px;
+      z-index: 2;
+    }
+
+    .card-right-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #091226 0%, #060A17 50%, #03050B 100%);
+      clip-path: polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%);
+      border-left: 2px solid rgba(0, 242, 254, 0.6);
+      box-shadow: -8px 0 25px rgba(0, 242, 254, 0.25);
+      z-index: 1;
+    }
+
+    .card-right-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: 24px 24px;
+      background-image:
+        linear-gradient(to right, rgba(0, 242, 254, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 242, 254, 0.04) 1px, transparent 1px);
+      pointer-events: none;
+    }
+
+    .card-right-bg::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.25) 0%, transparent 70%);
+      top: 50%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .card-right-content {
+      position: relative;
+      z-index: 2;
+      padding-left: 20px;
+      max-width: 360px;
+    }
+
+    .cyber-logo-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.2) 0%, rgba(79, 172, 254, 0.05) 100%);
+      border: 1.5px solid rgba(0, 242, 254, 0.5);
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan-neon);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.35);
+      margin-bottom: 22px;
+      animation: floatIcon 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatIcon {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-6px);
+      }
+    }
+
+    .welcome-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 38px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      color: #FFFFFF;
+      text-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+      margin-bottom: 14px;
+    }
+
+    .welcome-project {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cyan-neon);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .welcome-tagline {
+      font-size: 13.5px;
+      color: #94A3B8;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .tech-specs-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--cyan-neon);
+    }
+
+    .top-nav-bar {
+      position: absolute;
+      top: 22px;
+      left: 24px;
+      z-index: 20;
+    }
+
+    .btn-nav-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      border-radius: 8px;
+      color: var(--cyan-neon);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-nav-home:hover {
+      background: var(--cyan-neon);
+      color: #050811;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+      transform: translateY(-1px);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .top-nav-bar {
+        position: static;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+
+      .cyber-card {
+        flex-direction: column-reverse;
+        min-height: auto;
+      }
+
+      .card-left {
+        padding: 36px 24px;
+      }
+
+      .card-right {
+        margin-left: 0;
+        padding: 32px 20px 24px;
+      }
+
+      .card-right-bg {
+        clip-path: none;
+        border-left: none;
+        border-bottom: 2px solid rgba(0, 242, 254, 0.4);
+      }
+
+      .card-right-content {
+        padding-left: 0;
+      }
+
+      .welcome-title {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navigation Link to Home / Dashboard -->
+  <div class="top-nav-bar">
+    <a href="/" class="btn-nav-home" id="btn-home-link" title="Return to Dashboard">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>Home / Dashboard</span>
+    </a>
+  </div>
+
+  <div class="glow-sphere glow-1"></div>
+  <div class="glow-sphere glow-2"></div>
+
+  <div class="signup-wrapper">
+    <div class="cyber-card">
+
+      <!-- LEFT SIDE: SIGN UP FORM -->
+      <div class="card-left">
+        <a href="/" class="brand-mini-badge" style="text-decoration: none;" title="Go to Dashboard">
+          <span class="brand-pulse-dot"></span>
+          <span class="brand-mini-title">AI-Powered Interview Management & Recruitment System</span>
+        </a>
+
+        <h1 class="signup-heading">Create Account</h1>
+
+        <!-- Alert Banners -->
+        <div class="cyber-alert cyber-alert-danger" id="alert-error" role="alert">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="flex-shrink:0;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="8" x2="12" y2="12"></line>
+            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+          </svg>
+          <span id="alert-error-text">Registration failed</span>
+        </div>
+
+        <div class="cyber-alert cyber-alert-success" id="alert-success" role="status">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            style="flex-shrink:0;">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          <span id="alert-success-text">Account created successfully! Redirecting...</span>
+        </div>
+
+        <!-- FORM -->
+        <form id="form-register" onsubmit="handleRegister(event)" novalidate>
+          <div class="field-group">
+            <label for="fullname">Full Name</label>
+            <div class="input-box">
+              <span class="input-icon-left">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </span>
+              <input type="text" id="fullname" class="cyber-input" placeholder="e.g. Onkar Jadhav" required>
+            </div>
+            <div class="field-err-msg" id="err-fullname">Please enter your full name</div>
+          </div>
+
+          <div class="field-group">
+            <label for="username">Username</label>
+            <div class="input-box">
+              <span class="input-icon-left">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="4"></circle>
+                  <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
+                </svg>
+              </span>
+              <input type="text" id="username" class="cyber-input" placeholder="e.g. onkar123" minlength="3"
+                autocomplete="username" required>
+            </div>
+            <div class="field-err-msg" id="err-username">Username must be at least 3 characters</div>
+          </div>
+
+          <div class="field-group">
+            <label for="email">Email Address</label>
+            <div class="input-box">
+              <span class="input-icon-left">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+              </span>
+              <input type="email" id="email" class="cyber-input" placeholder="you@example.com" autocomplete="email"
+                required>
+            </div>
+            <div class="field-err-msg" id="err-email">Please enter a valid email address</div>
+          </div>
+
+          <div class="field-group">
+            <label for="password">Password</label>
+            <div class="input-box">
+              <span class="input-icon-left">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </span>
+              <input type="password" id="password" class="cyber-input" placeholder="At least 6 characters" minlength="6"
+                autocomplete="new-password" style="padding-right: 42px;" oninput="checkStrength(this.value)" required>
+              <button type="button" class="btn-toggle-eye" onclick="togglePasswordVisibility('password', this)"
+                aria-label="Toggle password visibility">
+                <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <svg class="eye-closed" style="display: none;" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24">
+                  </path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+            <div class="strength-meter" id="strength-meter">
+              <div class="strength-bar" id="strength-bar"></div>
+            </div>
+            <div class="field-err-msg" id="err-password">Password must be at least 6 characters</div>
+          </div>
+
+          <button type="submit" class="btn-cyber-signup" id="btn-signup-submit">
+            <span class="loading-spinner" id="signup-spinner"></span>
+            <span id="signup-text">Create Account</span>
+          </button>
+
+          <!-- Cyber "OR" Divider -->
+          <div class="cyber-divider">
+            <span>OR</span>
+          </div>
+
+          <!-- Continue with Google Button -->
+          <button
+            type="button"
+            class="btn-google-continue"
+            id="btn-google-login"
+            onclick="handleGoogleLogin()"
+            aria-label="Continue with Google"
+          >
+            <!-- Google 4-color SVG Icon -->
+            <svg class="google-icon" id="google-icon" width="20" height="20" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.27 21.36 7.35 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.94 0 12s.46 3.84 1.26 5.42l4.02-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+            <span class="loading-spinner-google" id="google-spinner"></span>
+            <span id="google-btn-text">Continue with Google</span>
+          </button>
+
+          <div class="login-cta">
+            Already have an account?
+            <a href="/login">Sign In</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- RIGHT SIDE: DIAGONAL SHOWCASE -->
+      <div class="card-right">
+        <div class="card-right-bg"></div>
+        <div class="card-right-content">
+          <div class="cyber-logo-icon">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="8.5" cy="7" r="4"></circle>
+              <polyline points="17 11 19 13 23 9"></polyline>
+            </svg>
+          </div>
+
+          <h2 class="welcome-title">JOIN THE PORTAL</h2>
+          <div class="welcome-project">AI-Powered Interview Management & Recruitment System</div>
+          <p class="welcome-tagline">
+            Manage interviews. Manage candidates. Simplify recruitment.
+          </p>
+
+          <div class="tech-specs-chip">
+            <span class="brand-pulse-dot" style="width: 6px; height: 6px;"></span>
+            <span>SECURE REGISTRATION GATEWAY</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = (() => {
+      if (typeof window !== "undefined" && window.location.protocol.startsWith("http") && window.location.origin) {
+        return window.location.origin;
+      }
+      return "http://127.0.0.1:8000";
+    })();
+
+    // Handle incoming URL parameters (e.g. error redirects from OAuth)
+    (() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has("error")) {
+        showAlert(decodeURIComponent(urlParams.get("error")), "danger");
+      }
+    })();
+
+    // Handle Continue with Google
+    function handleGoogleLogin() {
+      const btn = document.getElementById("btn-google-login");
+      const icon = document.getElementById("google-icon");
+      const spinner = document.getElementById("google-spinner");
+      const btnText = document.getElementById("google-btn-text");
+
+      if (btn) btn.disabled = true;
+      if (icon) icon.style.display = "none";
+      if (spinner) spinner.style.display = "inline-block";
+      if (btnText) btnText.textContent = "Connecting to Google...";
+
+      window.location.href = `${API_BASE}/auth/google/login`;
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      const eyeOpen = btn.querySelector(".eye-open");
+      const eyeClosed = btn.querySelector(".eye-closed");
+
+      if (input.type === "password") {
+        input.type = "text";
+        if (eyeOpen) eyeOpen.style.display = "none";
+        if (eyeClosed) eyeClosed.style.display = "block";
+      } else {
+        input.type = "password";
+        if (eyeOpen) eyeOpen.style.display = "block";
+        if (eyeClosed) eyeClosed.style.display = "none";
+      }
+    }
+
+    function checkStrength(val) {
+      const meter = document.getElementById("strength-meter");
+      const bar = document.getElementById("strength-bar");
+      if (!val) {
+        meter.style.display = "none";
+        return;
+      }
+      meter.style.display = "block";
+      let score = 0;
+      if (val.length >= 6) score++;
+      if (val.length >= 10) score++;
+      if (/[A-Z]/.test(val)) score++;
+      if (/[0-9]/.test(val)) score++;
+      if (/[^A-Za-z0-9]/.test(val)) score++;
+
+      if (score <= 2) {
+        bar.style.width = "33%";
+        bar.style.backgroundColor = "#FF3366";
+      } else if (score <= 4) {
+        bar.style.width = "66%";
+        bar.style.backgroundColor = "#F59E0B";
+      } else {
+        bar.style.width = "100%";
+        bar.style.backgroundColor = "#00FFB2";
+      }
+    }
+
+    function showAlert(msg, type = "danger") {
+      const errBox = document.getElementById("alert-error");
+      const succBox = document.getElementById("alert-success");
+      errBox.classList.remove("visible");
+      succBox.classList.remove("visible");
+
+      if (type === "danger") {
+        document.getElementById("alert-error-text").textContent = msg;
+        errBox.classList.add("visible");
+      } else {
+        document.getElementById("alert-success-text").textContent = msg;
+        succBox.classList.add("visible");
+      }
+    }
+
+    function clearErrors() {
+      document.querySelectorAll(".field-err-msg").forEach(el => el.classList.remove("visible"));
+      document.querySelectorAll(".cyber-input").forEach(el => el.classList.remove("has-error"));
+    }
+
+    async function handleRegister(e) {
+      e.preventDefault();
+      clearErrors();
+      document.getElementById("alert-error").classList.remove("visible");
+      document.getElementById("alert-success").classList.remove("visible");
+
+      const nameEl = document.getElementById("fullname");
+      const userEl = document.getElementById("username");
+      const emailEl = document.getElementById("email");
+      const passEl = document.getElementById("password");
+
+      const fullName = nameEl.value.trim();
+      const username = userEl.value.trim();
+      const email = emailEl.value.trim();
+      const password = passEl.value;
+
+      let hasErr = false;
+      if (!fullName) {
+        nameEl.classList.add("has-error");
+        document.getElementById("err-fullname").classList.add("visible");
+        hasErr = true;
+      }
+      if (!username || username.length < 3) {
+        userEl.classList.add("has-error");
+        document.getElementById("err-username").classList.add("visible");
+        hasErr = true;
+      }
+      if (!email || !email.includes("@")) {
+        emailEl.classList.add("has-error");
+        document.getElementById("err-email").classList.add("visible");
+        hasErr = true;
+      }
+      if (!password || password.length < 6) {
+        passEl.classList.add("has-error");
+        document.getElementById("err-password").classList.add("visible");
+        hasErr = true;
+      }
+
+      if (hasErr) return;
+
+      const btn = document.getElementById("btn-signup-submit");
+      const spinner = document.getElementById("signup-spinner");
+      const text = document.getElementById("signup-text");
+
+      btn.disabled = true;
+      spinner.style.display = "inline-block";
+      text.textContent = "Creating Account...";
+
+      try {
+        const resp = await fetch(`${API_BASE}/auth/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            full_name: fullName,
+            username: username,
+            email: email,
+            password: password,
+            role: "admin",
+          }),
+        });
+
+        const data = await resp.json().catch(() => ({}));
+
+        if (!resp.ok) {
+          throw new Error(data.detail || "Registration failed. Please try again.");
+        }
+
+        localStorage.setItem("auth_token", data.access_token);
+        localStorage.setItem("auth_user", JSON.stringify(data.user));
+
+        showAlert("Account created successfully! Redirecting...", "success");
+        text.textContent = "Redirecting...";
+
+        const isHttp = typeof window !== "undefined" && window.location.protocol.startsWith("http");
+        setTimeout(() => {
+          window.location.href = isHttp ? "/" : "index.html";
+        }, 600);
+
+      } catch (err) {
+        showAlert(err.message || "Registration failed. Please check your inputs.", "danger");
+        btn.disabled = false;
+        spinner.style.display = "none";
+        text.textContent = "Create Account";
+      }
+    }
+  </script>
+</body>
+
+</html>

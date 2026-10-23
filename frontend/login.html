@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — AI-Powered Interview Management and Recruitment System</title>
+  <meta name="description" content="Futuristic cyber portal login for the AI-Powered Interview Management and Recruitment System.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #050811;
+      --card-bg: rgba(9, 14, 26, 0.95);
+      --cyan-neon: #00F2FE;
+      --cyan-glow: rgba(0, 242, 254, 0.45);
+      --cyan-soft: rgba(0, 242, 254, 0.12);
+      --blue-accent: #4FACFE;
+      --navy-bg: #0B1224;
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      --text-sub: #64748B;
+      --border-dark: rgba(0, 242, 254, 0.22);
+      --border-glow: rgba(0, 242, 254, 0.7);
+      --danger: #FF3366;
+      --danger-bg: rgba(255, 51, 102, 0.12);
+      --danger-border: rgba(255, 51, 102, 0.4);
+      --success: #00FFB2;
+      --success-bg: rgba(0, 255, 178, 0.12);
+      --success-border: rgba(0, 255, 178, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(0, 242, 254, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(79, 172, 254, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(11, 18, 36, 0.85) 0%, #050811 100%);
+      background-attachment: fixed;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      color: var(--text-main);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Subtle Cybertech Grid Background Pattern */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 242, 254, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 242, 254, 0.03) 1px, transparent 1px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient Corner Ambient Lighting */
+    .glow-sphere {
+      position: fixed;
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+    .glow-1 {
+      background: #00F2FE;
+      top: -150px;
+      left: -150px;
+    }
+    .glow-2 {
+      background: #4FACFE;
+      bottom: -150px;
+      right: -150px;
+    }
+
+    /* Main Container */
+    .login-wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 940px;
+      animation: cyberEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes cyberEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* ========================================================
+       CENTERED RECTANGULAR CARD WITH GLOWING CYAN NEON BORDER
+       ======================================================== */
+    .cyber-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 1.5px solid var(--border-glow);
+      box-shadow: 
+        0 0 30px var(--cyan-glow),
+        0 0 70px rgba(0, 242, 254, 0.15),
+        inset 0 0 15px rgba(0, 242, 254, 0.08);
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      min-height: 540px;
+      backdrop-filter: blur(20px);
+    }
+
+    /* Subtle Animated Corner Highlights */
+    .cyber-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 20px;
+      pointer-events: none;
+      border: 1px solid transparent;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.25);
+    }
+
+    /* ========================================================
+       LEFT SIDE: LOGIN FORM
+       ======================================================== */
+    .card-left {
+      flex: 1.15;
+      padding: 48px 46px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 3;
+      background: rgba(8, 13, 25, 0.96);
+    }
+
+    .brand-mini-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .brand-pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--cyan-neon);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--cyan-neon);
+      animation: pulseNeon 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseNeon {
+      0%, 100% { opacity: 0.6; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .brand-mini-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--cyan-neon);
+      font-weight: 600;
+    }
+
+    .login-heading {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #FFFFFF;
+      margin-bottom: 26px;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+
+    /* Form Fields */
+    .field-group {
+      margin-bottom: 20px;
+    }
+
+    .field-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #CBD5E1;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    .input-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-icon-left {
+      position: absolute;
+      left: 14px;
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+      transition: color 0.2s ease;
+    }
+
+    .cyber-input {
+      width: 100%;
+      padding: 13px 14px 13px 44px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #FFFFFF;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1.5px solid rgba(0, 242, 254, 0.25);
+      border-radius: 10px;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .cyber-input::placeholder {
+      color: #475569;
+    }
+
+    .cyber-input:focus {
+      background: rgba(15, 23, 42, 0.95);
+      border-color: var(--cyan-neon);
+      box-shadow: 0 0 16px rgba(0, 242, 254, 0.35);
+    }
+
+    .cyber-input:focus + .input-icon-left,
+    .cyber-input:focus ~ .input-icon-left {
+      color: var(--cyan-neon);
+    }
+
+    .cyber-input.has-error {
+      border-color: var(--danger);
+      background: rgba(255, 51, 102, 0.06);
+    }
+
+    .cyber-input.has-error:focus {
+      box-shadow: 0 0 16px rgba(255, 51, 102, 0.4);
+    }
+
+    .field-err-msg {
+      display: none;
+      font-size: 11.5px;
+      color: var(--danger);
+      margin-top: 5px;
+      font-weight: 500;
+    }
+
+    .field-err-msg.visible {
+      display: block;
+    }
+
+    /* Show/Hide Password Toggle */
+    .btn-toggle-eye {
+      position: absolute;
+      right: 12px;
+      background: transparent;
+      border: none;
+      color: var(--text-sub);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s ease;
+    }
+
+    .btn-toggle-eye:hover {
+      color: var(--cyan-neon);
+    }
+
+    /* Form Extras (Remember Me & Forgot Password) */
+    .form-extras {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      font-size: 13px;
+    }
+
+    .cyber-check-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .cyber-check-label input[type="checkbox"] {
+      accent-color: var(--cyan-neon);
+      width: 15px;
+      height: 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .btn-link-action {
+      background: transparent;
+      border: none;
+      color: var(--cyan-neon);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      padding: 0;
+    }
+
+    .btn-link-action:hover {
+      color: #FFFFFF;
+      text-shadow: 0 0 8px var(--cyan-neon);
+      text-decoration: underline;
+    }
+
+    /* Glowing Cyan Login Button */
+    .btn-cyber-login {
+      width: 100%;
+      padding: 13.5px 20px;
+      background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 100%);
+      color: #050811;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.45);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-cyber-login:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.7);
+    }
+
+    .btn-cyber-login:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .btn-cyber-login:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .loading-spinner {
+      width: 17px;
+      height: 17px;
+      border: 2px solid rgba(5, 8, 17, 0.3);
+      border-top-color: #050811;
+      border-radius: 50%;
+      animation: spinSpinner 0.65s linear infinite;
+      display: none;
+    }
+
+    @keyframes spinSpinner {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Cyber "OR" Divider */
+    .cyber-divider {
+      display: flex;
+      align-items: center;
+      margin: 18px 0 14px 0;
+      color: var(--text-sub);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .cyber-divider::before,
+    .cyber-divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(0, 242, 254, 0.28), transparent);
+    }
+
+    .cyber-divider span {
+      padding: 0 12px;
+      color: #94A3B8;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* "Continue with Google" Button */
+    .btn-google-continue {
+      width: 100%;
+      padding: 12px 18px;
+      background: rgba(11, 18, 36, 0.85);
+      border: 1.5px solid rgba(0, 242, 254, 0.35);
+      border-radius: 10px;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 0 12px rgba(0, 242, 254, 0.05);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-google-continue:hover:not(:disabled) {
+      background: rgba(16, 26, 50, 0.95);
+      border-color: var(--cyan-neon);
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.35), 0 6px 20px rgba(0, 0, 0, 0.4);
+      color: #FFFFFF;
+    }
+
+    .btn-google-continue:active:not(:disabled) {
+      transform: translateY(0);
+    }
+
+    .btn-google-continue:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .google-icon {
+      flex-shrink: 0;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-google-continue:hover:not(:disabled) .google-icon {
+      transform: scale(1.08);
+    }
+
+    .loading-spinner-google {
+      width: 17px;
+      height: 17px;
+      border: 2px solid rgba(0, 242, 254, 0.2);
+      border-top-color: var(--cyan-neon);
+      border-radius: 50%;
+      animation: spinSpinner 0.65s linear infinite;
+      display: none;
+      flex-shrink: 0;
+    }
+
+    /* Don't have an account? Sign Up */
+    .signup-cta {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .signup-cta a,
+    .signup-cta button {
+      color: var(--cyan-neon);
+      font-weight: 600;
+      text-decoration: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 4px;
+      transition: all 0.2s;
+    }
+
+    .signup-cta a:hover,
+    .signup-cta button:hover {
+      color: #FFFFFF;
+      text-shadow: 0 0 10px var(--cyan-neon);
+      text-decoration: underline;
+    }
+
+    /* Error & Success Alert Banners */
+    .cyber-alert {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 18px;
+      animation: alertIn 0.25s ease-out;
+    }
+
+    @keyframes alertIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cyber-alert.visible {
+      display: flex;
+    }
+
+    .cyber-alert-danger {
+      background: var(--danger-bg);
+      color: #FFA3BA;
+      border: 1px solid var(--danger-border);
+      box-shadow: 0 0 15px rgba(255, 51, 102, 0.2);
+    }
+
+    .cyber-alert-success {
+      background: var(--success-bg);
+      color: #A3FFDD;
+      border: 1px solid var(--success-border);
+      box-shadow: 0 0 15px rgba(0, 255, 178, 0.2);
+    }
+
+    /* Evaluator Demo Note */
+    .eval-note-strip {
+      margin-top: 20px;
+      padding: 10px 14px;
+      background: rgba(0, 242, 254, 0.04);
+      border: 1px dashed rgba(0, 242, 254, 0.3);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .eval-note-strip code {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--cyan-neon);
+      background: rgba(0, 242, 254, 0.1);
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+
+    .btn-quick-fill {
+      background: rgba(0, 242, 254, 0.15);
+      color: var(--cyan-neon);
+      border: 1px solid rgba(0, 242, 254, 0.4);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-quick-fill:hover {
+      background: var(--cyan-neon);
+      color: #050811;
+      box-shadow: 0 0 10px var(--cyan-neon);
+    }
+
+    /* ========================================================
+       RIGHT SIDE: "WELCOME BACK!" DIAGONALLY CUT SHOWCASE
+       ======================================================== */
+    .card-right {
+      flex: 1.05;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 48px 42px;
+      overflow: hidden;
+      margin-left: -40px;
+      z-index: 2;
+    }
+
+    /* Diagonal Cyber Mask Slice */
+    .card-right-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, #091226 0%, #060A17 50%, #03050B 100%);
+      clip-path: polygon(14% 0%, 100% 0%, 100% 100%, 0% 100%);
+      border-left: 2px solid rgba(0, 242, 254, 0.6);
+      box-shadow: -8px 0 25px rgba(0, 242, 254, 0.25);
+      z-index: 1;
+    }
+
+    /* Subtle Grid Overlay on Right Side */
+    .card-right-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-size: 24px 24px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 242, 254, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 242, 254, 0.04) 1px, transparent 1px);
+      pointer-events: none;
+    }
+
+    /* Ambient Glow on Right Side */
+    .card-right-bg::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.25) 0%, transparent 70%);
+      top: 50%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .card-right-content {
+      position: relative;
+      z-index: 2;
+      padding-left: 20px;
+      max-width: 360px;
+    }
+
+    .cyber-logo-icon {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(135deg, rgba(0, 242, 254, 0.2) 0%, rgba(79, 172, 254, 0.05) 100%);
+      border: 1.5px solid rgba(0, 242, 254, 0.5);
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan-neon);
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.35);
+      margin-bottom: 22px;
+      animation: floatIcon 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatIcon {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-6px); }
+    }
+
+    .welcome-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      color: #FFFFFF;
+      text-shadow: 0 0 20px rgba(0, 242, 254, 0.6), 0 0 40px rgba(0, 242, 254, 0.2);
+      margin-bottom: 14px;
+    }
+
+    .welcome-project {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cyan-neon);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .welcome-tagline {
+      font-size: 13.5px;
+      color: #94A3B8;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .tech-specs-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--cyan-neon);
+    }
+
+    /* Modal Overlay for Password Recovery */
+    .cyber-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 17, 0.85);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+      animation: modalFade 0.2s ease-out;
+    }
+
+    @keyframes modalFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .cyber-modal-card {
+      background: #0B1224;
+      border: 1.5px solid var(--cyan-neon);
+      box-shadow: 0 0 35px rgba(0, 242, 254, 0.4);
+      border-radius: 16px;
+      max-width: 440px;
+      width: 100%;
+      padding: 30px;
+      position: relative;
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .modal-head h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .modal-close-x {
+      background: none;
+      border: none;
+      font-size: 22px;
+      color: var(--text-sub);
+      cursor: pointer;
+      line-height: 1;
+    }
+    .modal-close-x:hover {
+      color: var(--cyan-neon);
+    }
+
+    .modal-info-text {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 20px;
+    }
+
+    .top-nav-bar {
+      position: absolute;
+      top: 22px;
+      left: 24px;
+      z-index: 20;
+    }
+
+    .btn-nav-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.35);
+      border-radius: 8px;
+      color: var(--cyan-neon);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-nav-home:hover {
+      background: var(--cyan-neon);
+      color: #050811;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+      transform: translateY(-1px);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 860px) {
+      .top-nav-bar {
+        position: static;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      .cyber-card {
+        flex-direction: column-reverse;
+        min-height: auto;
+      }
+      .card-left {
+        padding: 36px 28px;
+      }
+      .card-right {
+        margin-left: 0;
+        padding: 36px 24px 30px;
+      }
+      .card-right-bg {
+        clip-path: none;
+        border-left: none;
+        border-bottom: 2px solid rgba(0, 242, 254, 0.4);
+      }
+      .card-right-content {
+        padding-left: 0;
+      }
+      .welcome-title {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Link to Home / Dashboard -->
+  <div class="top-nav-bar">
+    <a href="/" class="btn-nav-home" id="btn-home-link" title="Return to Dashboard">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+      <span>Home / Dashboard</span>
+    </a>
+  </div>
+
+  <!-- Ambient Glowing Spheres -->
+  <div class="glow-sphere glow-1"></div>
+  <div class="glow-sphere glow-2"></div>
+
+  <div class="login-wrapper">
+    <!-- ================= CENTERED RECTANGULAR CARD ================= -->
+    <div class="cyber-card">
+      
+      <!-- ================= LEFT SIDE: LOGIN FORM ================= -->
+      <div class="card-left">
+        <a href="/" class="brand-mini-badge" style="text-decoration: none;" title="Go to Dashboard">
+          <span class="brand-pulse-dot"></span>
+          <span class="brand-mini-title">AI-Powered Interview Management & Recruitment System</span>
+        </a>
+
+        <h1 class="login-heading">Login</h1>
+
+        <!-- Alert Banners -->
+        <div class="cyber-alert cyber-alert-danger" id="alert-error" role="alert">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span id="alert-error-text">Invalid login credentials</span>
+        </div>
+
+        <div class="cyber-alert cyber-alert-success" id="alert-success" role="status">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span id="alert-success-text">Authentication successful! Redirecting...</span>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <form id="form-login" onsubmit="handleLogin(event)" novalidate>
+          <!-- Username Input -->
+          <div class="field-group">
+            <label for="username">Username</label>
+            <div class="input-box">
+              <span class="input-icon-left">
+                <!-- User SVG Icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </span>
+              <input
+                type="text"
+                id="username"
+                class="cyber-input"
+                placeholder="Enter your username or email"
+                autocomplete="username"
+                required
+              >
+            </div>
+            <div class="field-err-msg" id="err-username">Please enter your username or email</div>
+          </div>
+
+          <!-- Password Input -->
+          <div class="field-group">
+            <label for="password">Password</label>
+            <div class="input-box">
+              <span class="input-icon-left">
+                <!-- Lock SVG Icon -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </span>
+              <input
+                type="password"
+                id="password"
+                class="cyber-input"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                style="padding-right: 42px;"
+                required
+              >
+              <!-- Show/Hide Password Toggle -->
+              <button
+                type="button"
+                class="btn-toggle-eye"
+                onclick="togglePasswordVisibility('password', this)"
+                aria-label="Toggle password visibility"
+                title="Show / Hide Password"
+              >
+                <!-- Eye Open -->
+                <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                <!-- Eye Closed -->
+                <svg class="eye-closed" style="display: none;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                  <line x1="1" y1="1" x2="23" y2="23"></line>
+                </svg>
+              </button>
+            </div>
+            <div class="field-err-msg" id="err-password">Please enter your password</div>
+          </div>
+
+          <!-- Options -->
+          <div class="form-extras">
+            <label class="cyber-check-label">
+              <input type="checkbox" id="remember-me" checked>
+              <span>Remember me</span>
+            </label>
+            <button type="button" class="btn-link-action" onclick="openForgotModal()">Forgot Password?</button>
+          </div>
+
+          <!-- Login Button -->
+          <button type="submit" class="btn-cyber-login" id="btn-login-submit">
+            <span class="loading-spinner" id="login-spinner"></span>
+            <span id="login-text">Login</span>
+          </button>
+
+          <!-- Cyber "OR" Divider -->
+          <div class="cyber-divider">
+            <span>OR</span>
+          </div>
+
+          <!-- Continue with Google Button -->
+          <button
+            type="button"
+            class="btn-google-continue"
+            id="btn-google-login"
+            onclick="handleGoogleLogin()"
+            aria-label="Continue with Google"
+          >
+            <!-- Google 4-color SVG Icon -->
+            <svg class="google-icon" id="google-icon" width="20" height="20" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.27 21.36 7.35 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.94 0 12s.46 3.84 1.26 5.42l4.02-3.15z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.35 0 3.27 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+            </svg>
+            <span class="loading-spinner-google" id="google-spinner"></span>
+            <span id="google-btn-text">Continue with Google</span>
+          </button>
+
+          <!-- Don't have an account? Sign Up -->
+          <div class="signup-cta">
+            Don't have an account?
+            <a href="/register" id="link-signup">Sign Up</a>
+          </div>
+
+          <!-- Quick Evaluator Helper Note -->
+          <div class="eval-note-strip">
+            <div>
+              <span>Admin:</span> <code>admin</code> / <code>Admin123!</code>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <button type="button" class="btn-quick-fill" onclick="quickFillAdmin()">Fill Admin</button>
+              <button type="button" class="btn-quick-fill" onclick="testGoogleDemo()" title="Test Google OAuth flow with demo account">Demo Google</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- ================= RIGHT SIDE: "WELCOME BACK!" DIAGONAL SHOWCASE ================= -->
+      <div class="card-right">
+        <div class="card-right-bg"></div>
+        <div class="card-right-content">
+          <div class="cyber-logo-icon">
+            <!-- Tech Clipboard / Interview SVG Icon -->
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+              <path d="M9 12h6"></path>
+              <path d="M9 16h6"></path>
+            </svg>
+          </div>
+
+          <h2 class="welcome-title">WELCOME BACK!</h2>
+          <div class="welcome-project">AI-Powered Interview Management & Recruitment System</div>
+          <p class="welcome-tagline">
+            Manage interviews. Manage candidates. Simplify recruitment.
+          </p>
+
+          <div class="tech-specs-chip">
+            <span class="brand-pulse-dot" style="width: 6px; height: 6px;"></span>
+            <span>CYBER PORTAL &bull; ONLINE</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Password Recovery Modal -->
+  <div class="cyber-modal-overlay" id="modal-forgot" role="dialog" aria-modal="true">
+    <div class="cyber-modal-card">
+      <div class="modal-head">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          Password Recovery
+        </h3>
+        <button type="button" class="modal-close-x" onclick="closeForgotModal()">&times;</button>
+      </div>
+      <p class="modal-info-text">
+        Enter your username or email address below to initiate password recovery.
+      </p>
+
+      <form id="form-forgot" onsubmit="handleForgotSubmit(event)">
+        <div class="field-group">
+          <label for="forgot-input">Username or Email</label>
+          <div class="input-box">
+            <input type="text" id="forgot-input" class="cyber-input" placeholder="admin@interview.com" required>
+          </div>
+          <div class="field-err-msg" id="err-forgot">Please provide your username or email</div>
+        </div>
+
+        <div id="forgot-resp" style="display: none; margin-bottom: 16px; font-size: 13px; padding: 10px; border-radius: 8px;"></div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+          <button type="submit" class="btn-cyber-login" id="btn-forgot-submit" style="flex: 2; padding: 11px;">
+            <span class="loading-spinner" id="forgot-spinner"></span>
+            <span id="forgot-btn-text">Send Instructions</span>
+          </button>
+          <button type="button" class="btn-cyber-login" onclick="closeForgotModal()" style="flex: 1; background: rgba(255,255,255,0.08); color: #fff; box-shadow: none;">
+            Close
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = (() => {
+      if (typeof window !== "undefined" && window.location.protocol.startsWith("http") && window.location.origin) {
+        return window.location.origin;
+      }
+      return "http://127.0.0.1:8000";
+    })();
+
+    // Auto-redirect if already authenticated and handle incoming errors
+    (() => {
+      const isHttp = typeof window !== "undefined" && window.location.protocol.startsWith("http");
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.has("expired")) {
+        showAlert("Your session has expired. Please sign in again.", "danger");
+      }
+      if (urlParams.has("error")) {
+        showAlert(decodeURIComponent(urlParams.get("error")), "danger");
+      }
+      const token = localStorage.getItem("auth_token");
+      if (token && !urlParams.has("expired") && !urlParams.has("force") && !urlParams.has("error")) {
+        window.location.href = isHttp ? "/" : "index.html";
+      }
+    })();
+
+    // Handle Continue with Google
+    function handleGoogleLogin() {
+      const btn = document.getElementById("btn-google-login");
+      const icon = document.getElementById("google-icon");
+      const spinner = document.getElementById("google-spinner");
+      const btnText = document.getElementById("google-btn-text");
+
+      hideAlerts();
+      btn.disabled = true;
+      if (icon) icon.style.display = "none";
+      if (spinner) spinner.style.display = "inline-block";
+      if (btnText) btnText.textContent = "Connecting to Google...";
+
+      window.location.href = `${API_BASE}/auth/google/login`;
+    }
+
+    // Demo Google login for offline / credential-free evaluation
+    function testGoogleDemo() {
+      const btn = document.getElementById("btn-google-login");
+      const icon = document.getElementById("google-icon");
+      const spinner = document.getElementById("google-spinner");
+      const btnText = document.getElementById("google-btn-text");
+
+      hideAlerts();
+      btn.disabled = true;
+      if (icon) icon.style.display = "none";
+      if (spinner) spinner.style.display = "inline-block";
+      if (btnText) btnText.textContent = "Signing in with Google Demo...";
+
+      window.location.href = `${API_BASE}/auth/google/demo`;
+    }
+
+    // Show/Hide password toggle
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      const eyeOpen = btn.querySelector(".eye-open");
+      const eyeClosed = btn.querySelector(".eye-closed");
+
+      if (input.type === "password") {
+        input.type = "text";
+        if (eyeOpen) eyeOpen.style.display = "none";
+        if (eyeClosed) eyeClosed.style.display = "block";
+      } else {
+        input.type = "password";
+        if (eyeOpen) eyeOpen.style.display = "block";
+        if (eyeClosed) eyeClosed.style.display = "none";
+      }
+    }
+
+    // Quick fill helper for evaluator testing
+    function quickFillAdmin() {
+      document.getElementById("username").value = "admin";
+      document.getElementById("password").value = "Admin123!";
+      clearErrors();
+      hideAlerts();
+    }
+
+    function showAlert(msg, type = "danger") {
+      const errBox = document.getElementById("alert-error");
+      const succBox = document.getElementById("alert-success");
+      hideAlerts();
+
+      if (type === "danger") {
+        document.getElementById("alert-error-text").textContent = msg;
+        errBox.classList.add("visible");
+      } else {
+        document.getElementById("alert-success-text").textContent = msg;
+        succBox.classList.add("visible");
+      }
+    }
+
+    function hideAlerts() {
+      document.getElementById("alert-error").classList.remove("visible");
+      document.getElementById("alert-success").classList.remove("visible");
+    }
+
+    function clearErrors() {
+      document.querySelectorAll(".field-err-msg").forEach(el => el.classList.remove("visible"));
+      document.querySelectorAll(".cyber-input").forEach(el => el.classList.remove("has-error"));
+    }
+
+    // Modal controls
+    function openForgotModal() {
+      document.getElementById("modal-forgot").style.display = "flex";
+      document.getElementById("forgot-resp").style.display = "none";
+      const userVal = document.getElementById("username").value.trim();
+      if (userVal) document.getElementById("forgot-input").value = userVal;
+    }
+
+    function closeForgotModal() {
+      document.getElementById("modal-forgot").style.display = "none";
+    }
+
+    async function handleForgotSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById("forgot-input");
+      const err = document.getElementById("err-forgot");
+      const respBox = document.getElementById("forgot-resp");
+      const val = input.value.trim();
+
+      if (!val) {
+        input.classList.add("has-error");
+        err.classList.add("visible");
+        return;
+      }
+      input.classList.remove("has-error");
+      err.classList.remove("visible");
+
+      const btn = document.getElementById("btn-forgot-submit");
+      const spinner = document.getElementById("forgot-spinner");
+      const text = document.getElementById("forgot-btn-text");
+
+      btn.disabled = true;
+      spinner.style.display = "inline-block";
+      text.textContent = "Processing...";
+
+      try {
+        const resp = await fetch(`${API_BASE}/auth/forgot-password`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email_or_username: val }),
+        });
+        const data = await resp.json().catch(() => ({}));
+        respBox.style.display = "block";
+        respBox.style.color = "#A3FFDD";
+        respBox.style.background = "rgba(0, 255, 178, 0.1)";
+        respBox.style.border = "1px solid rgba(0, 255, 178, 0.3)";
+        respBox.textContent = data.message || "Password recovery instructions dispatched.";
+      } catch (err) {
+        respBox.style.display = "block";
+        respBox.style.color = "#FFA3BA";
+        respBox.style.background = "rgba(255, 51, 102, 0.1)";
+        respBox.style.border = "1px solid rgba(255, 51, 102, 0.3)";
+        respBox.textContent = "Could not reach recovery service. Check connection.";
+      } finally {
+        btn.disabled = false;
+        spinner.style.display = "none";
+        text.textContent = "Send Instructions";
+      }
+    }
+
+    // Handle Login Submission
+    async function handleLogin(e) {
+      e.preventDefault();
+      hideAlerts();
+      clearErrors();
+
+      const userInput = document.getElementById("username");
+      const passInput = document.getElementById("password");
+      const username = userInput.value.trim();
+      const password = passInput.value;
+
+      let hasError = false;
+      if (!username) {
+        userInput.classList.add("has-error");
+        document.getElementById("err-username").classList.add("visible");
+        hasError = true;
+      }
+      if (!password) {
+        passInput.classList.add("has-error");
+        document.getElementById("err-password").classList.add("visible");
+        hasError = true;
+      }
+
+      if (hasError) return;
+
+      const btn = document.getElementById("btn-login-submit");
+      const spinner = document.getElementById("login-spinner");
+      const btnText = document.getElementById("login-text");
+
+      btn.disabled = true;
+      spinner.style.display = "inline-block";
+      btnText.textContent = "Authenticating...";
+
+      try {
+        const resp = await fetch(`${API_BASE}/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            username_or_email: username,
+            password: password,
+          }),
+        });
+
+        const data = await resp.json().catch(() => ({}));
+
+        if (!resp.ok) {
+          const msg = data.detail || "Invalid email/username or password";
+          throw new Error(msg);
+        }
+
+        // Save token and user details to localStorage
+        localStorage.setItem("auth_token", data.access_token);
+        localStorage.setItem("auth_user", JSON.stringify(data.user));
+
+        showAlert("Authentication successful! Redirecting...", "success");
+        btnText.textContent = "Redirecting...";
+
+        const isHttp = typeof window !== "undefined" && window.location.protocol.startsWith("http");
+        setTimeout(() => {
+          window.location.href = isHttp ? "/" : "index.html";
+        }, 500);
+
+      } catch (err) {
+        showAlert(err.message || "Failed to sign in. Please verify your credentials.", "danger");
+        btn.disabled = false;
+        spinner.style.display = "none";
+        btnText.textContent = "Login";
+      }
+    }
+  </script>
+</body>
+</html>
